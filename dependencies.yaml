@@ -31,8 +31,8 @@ dependencies:
         packages:
           - c-compiler
           - cxx-compiler
-          - libraft-headers==25.8.*
-          - librmm==25.8.*
+          - libraft-headers==25.10.*
+          - librmm==25.10.*
     specific:
       - output_types: conda
         matrices:
