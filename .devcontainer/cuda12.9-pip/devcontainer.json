@@ -8,6 +8,13 @@
       "BASE": "rapidsai/devcontainers:25.10-cpp-cuda12.9"
     }
   },
+  "runArgs": [
+    "--rm",
+    "--name",
+    "${localEnv:USER:anon}-rapids-${localWorkspaceFolderBasename}-25.10-cuda12.9-pip",
+    "--ulimit",
+    "nofile=500000"
+  ],
   "hostRequirements": {"gpu": "optional"},
   "features": {
     "ghcr.io/rapidsai/devcontainers/features/cuda:25.10": {
