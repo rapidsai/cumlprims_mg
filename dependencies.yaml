@@ -1,0 +1,123 @@
+# Dependency list for https://github.com/rapidsai/dependency-file-generator
+files:
+  all:
+    output: conda
+    matrix:
+      cuda: ["12.9"]
+      arch: [x86_64, aarch64]
+    includes:
+      - build_cpp
+      - cuda
+      - cuda_version
+      - develop
+      - py_version
+  checks:
+    output: none
+    includes:
+      - develop
+      - py_version
+channels:
+  - rapidsai
+  - rapidsai-nightly
+  - conda-forge
+dependencies:
+  build_cpp:
+    common:
+      - output_types: [conda, requirements, pyproject]
+        packages:
+          - ninja
+          - cmake>=3.30.4
+      - output_types: conda
+        packages:
+          - c-compiler
+          - cxx-compiler
+          - libraft-headers==25.8.*
+          - librmm==25.8.*
+    specific:
+      - output_types: conda
+        matrices:
+          - matrix: {arch: x86_64}
+            packages:
+              - sysroot_linux-64==2.28
+          - matrix: {arch: aarch64}
+            packages:
+              - sysroot_linux-aarch64==2.28
+      - output_types: conda
+        matrices:
+          - matrix: {arch: x86_64, cuda: "12.*"}
+            packages:
+              - gcc_linux-64=13.*
+              - cuda-nvcc
+          - matrix: {arch: aarch64, cuda: "12.*"}
+            packages:
+              - gcc_linux-aarch64=13.*
+              - cuda-nvcc
+  cuda_version:
+    specific:
+      - output_types: conda
+        matrices:
+          - matrix:
+              cuda: "12.0"
+            packages:
+              - cuda-version=12.0
+          - matrix:
+              cuda: "12.2"
+            packages:
+              - cuda-version=12.2
+          - matrix:
+              cuda: "12.5"
+            packages:
+              - cuda-version=12.5
+          - matrix:
+              cuda: "12.8"
+            packages:
+              - cuda-version=12.8
+          - matrix:
+              cuda: "12.9"
+            packages:
+              - cuda-version=12.9
+  cuda:
+    specific:
+      - output_types: conda
+        matrices:
+          - matrix:
+              cuda: "12.*"
+            packages:
+              - cuda-cudart-dev
+              - cuda-nvtx-dev
+              - libcublas-dev
+              - libcurand-dev
+              - libcusolver-dev
+              - libcusparse-dev
+  develop:
+    common:
+      - output_types: [conda, requirements]
+        packages:
+          - pre-commit
+      - output_types: conda
+        packages:
+          - clang==20.1.4
+          - clang-tools==20.1.4
+  py_version:
+    specific:
+      - output_types: conda
+        matrices:
+          - matrix:
+              py: "3.10"
+            packages:
+              - python=3.10
+          - matrix:
+              py: "3.11"
+            packages:
+              - python=3.11
+          - matrix:
+              py: "3.12"
+            packages:
+              - python=3.12
+          - matrix:
+              py: "3.13"
+            packages:
+              - python=3.13
+          - matrix:
+            packages:
+              - python>=3.10,<3.14

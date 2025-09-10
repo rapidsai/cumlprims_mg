@@ -1,0 +1,31 @@
+## https://pre-commit.com/
+#
+# Before first use: `pre-commit install`
+# To run: `pre-commit run --all-files`
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: debug-statements
+      - id: mixed-line-ending
+  - repo: https://github.com/pre-commit/mirrors-clang-format
+    rev: v20.1.4
+    hooks:
+      - id: clang-format
+        types_or: [c, c++, cuda]
+        args: ["-fallback-style=none", "-style=file", "-i"]
+  - repo: https://github.com/rapidsai/dependency-file-generator
+    rev: v1.19.0
+    hooks:
+      - id: rapids-dependency-file-generator
+        args: ["--clean"]
+  - repo: https://github.com/rapidsai/pre-commit-hooks
+    rev: v0.6.0
+    hooks:
+      - id: verify-copyright
+        files: |
+          (?x)
+              [.](cmake|cpp|cu|cuh|h|hpp|sh|pxd|py|pyx)$|
+              CMakeLists[.]txt$|
+              meta[.]yaml$
