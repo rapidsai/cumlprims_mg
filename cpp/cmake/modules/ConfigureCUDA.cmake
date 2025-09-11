@@ -24,7 +24,7 @@ list(APPEND CUMLPRIMS_MG_CUDA_FLAGS --expt-extended-lambda --expt-relaxed-conste
 # list(APPEND CUMLPRIMS_MG_CUDA_FLAGS -Werror=cross-execution-space-call)
 # list(APPEND CUMLPRIMS_MG_CUDA_FLAGS -Xcompiler=-Wall,-Werror,-Wno-error=deprecated-declarations)
 
-if(DISABLE_DEPRECATION_WARNING)
+if(DISABLE_DEPRECATION_WARNINGS)
     list(APPEND CUMLPRIMS_MG_CXX_FLAGS -Wno-deprecated-declarations -DRAFT_HIDE_DEPRECATION_WARNINGS)
     list(APPEND CUMLPRIMS_MG_CUDA_FLAGS -Xcompiler=-Wno-deprecated-declarations -DRAFT_HIDE_DEPRECATION_WARNINGS)
 endif()
