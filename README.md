@@ -1,15 +1,15 @@
 # cuMLPrims
 
-This repository contains C++ and CUDA code of muti-node multi-GPU (MNMG) ML mathematical primitives and some algorithms, that are used by [the main cuML project](https://github.com/rapidsai/cuml). The build system uses CMake for build configuration, and an out-of-source build is recommended.
+This repository contains C++ and CUDA code of multi-node multi-GPU (MNMG) ML mathematical primitives and some algorithms, that are used by [the main cuML project](https://github.com/rapidsai/cuml). The build system uses CMake for build configuration, and an out-of-source build is recommended.
 
 The MNMG code included in cuMLPrims follows the model one-process-per-GPU (OPG), where the code uses a communication library (based on cuML's comms) and each process has one GPU assigned to it. This is in contrast to single-process-multi-GPU (SPMG) approaches, which are no longer part of the code base.
 
 ## Folder Structure
 
-The folder structure mirrors closely the structure of github cuML. The folders are:
+The folder structure mirrors closely the structure of GitHub cuML. The folders are:
 
 - `ci`: Folders containing CI related scripts to run tests for each MR and create the conda packages.
-- `conda` Contains Conda recipe for `libcumlprims` Conda package in the `rapidsai` channel.
+- `conda`: Contains Conda recipe for `libcumlprims` Conda package in the `rapidsai` channel.
 - `cpp`: Contains the source code.
     - `cpp/cmake`: CMake related scripts.
     - `cpp/include`: The include folder for headers that are necessary to be installed/distributed to use the libcumlprims.so artifact by users of the library.
@@ -76,13 +76,13 @@ If using a conda environment (recommended), then cmake can be configured appropr
 $ cmake .. -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX
 ```
 
-Note: The following warning message is dependent upon the version of cmake and the `CMAKE_INSTALL_PREFIX` used. If this warning is displayed, the build should still run succesfully. We are currently working to resolve this open issue. You can silence this warning by adding `-DCMAKE_IGNORE_PATH=$CONDA_PREFIX/lib` to your `cmake` command.
+Note: The following warning message is dependent upon the version of cmake and the `CMAKE_INSTALL_PREFIX` used. If this warning is displayed, the build should still run successfully. We are currently working to resolve this open issue. You can silence this warning by adding `-DCMAKE_IGNORE_PATH=$CONDA_PREFIX/lib` to your `cmake` command.
 ```
 Cannot generate a safe runtime search path for target ml_test because files
 in some directories may conflict with libraries in implicit directories:
 ```
 
-There are many options to configure the build process, see the [customizing build section](#libcuml-&-libcumlc++).
+There are many options to configure the build process, see the [customizing build section](#custom-build-options).
 
 3. Build `libcumlprims`:
 
