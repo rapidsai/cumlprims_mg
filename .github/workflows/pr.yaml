@@ -55,7 +55,7 @@ jobs:
         SCCACHE_DIST_AUTH_TOKEN_VAR=RAPIDS_AUX_SECRET_1
       build_command: |
         sccache --zero-stats;
-        build-all -j0 --verbose 2>&1 | tee telemetry-artifacts/build.log;
+        build-all -j0 -DDISABLE_DEPRECATION_WARNINGS=ON --verbose 2>&1 | tee telemetry-artifacts/build.log;
         sccache --show-adv-stats | tee telemetry-artifacts/sccache-stats.txt;
   telemetry-summarize:
     # This job must use a self-hosted runner to record telemetry traces.

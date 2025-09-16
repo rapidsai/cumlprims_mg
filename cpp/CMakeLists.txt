@@ -54,6 +54,7 @@ option(CUMLPRIMS_MG_RAFT_CLONE_ON_PIN "Explicitly clone RAFT branch when pinned 
 option(DETECT_CONDA_ENV "Enable detection of conda environment for dependencies" ON)
 option(DISABLE_OPENMP "Disable OpenMP" OFF)
 option(NVTX "Enable nvtx markers" OFF)
+option(DISABLE_DEPRECATION_WARNINGS "Disable warnings generated from deprecated declarations." OFF)
 
 if(BUILD_TESTS)
   message(STATUS "CUMLPRIMS_MG: Setting BUILD_TESTS to OFF because they don't compile")
