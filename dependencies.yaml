@@ -32,8 +32,8 @@ dependencies:
           - c-compiler
           - cuda-nvcc
           - cxx-compiler
-          - libraft-headers==25.10.*
-          - librmm==25.10.*
+          - libraft-headers==25.12.*
+          - librmm==25.12.*
     specific:
       - output_types: conda
         matrices:
