@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2019-2024, NVIDIA CORPORATION.
+# Copyright (c) 2019-2025, NVIDIA CORPORATION.
 ########################
 # cuML Version Updater #
 ########################
@@ -35,6 +35,7 @@ function sed_runner() {
 
 # Centralized version file update
 echo "${NEXT_FULL_TAG}" > VERSION
+echo "branch-${NEXT_SHORT_TAG}" > RAPIDS_BRANCH
 
 DEPENDENCIES=(
   libraft-headers
