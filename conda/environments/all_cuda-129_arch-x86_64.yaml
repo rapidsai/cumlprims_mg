@@ -14,13 +14,13 @@ dependencies:
 - cuda-nvtx-dev
 - cuda-version=12.9
 - cxx-compiler
-- gcc_linux-64=13.*
+- gcc_linux-64=14.*
 - libcublas-dev
 - libcurand-dev
 - libcusolver-dev
 - libcusparse-dev
-- libraft-headers==25.8.*
-- librmm==25.8.*
+- libraft-headers==25.10.*
+- librmm==25.10.*
 - ninja
 - pre-commit
 - python>=3.10,<3.14

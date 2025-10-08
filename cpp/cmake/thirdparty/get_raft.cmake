@@ -1,5 +1,5 @@
 #=============================================================================
-# Copyright (c) 2020-2023, NVIDIA CORPORATION.
+# Copyright (c) 2020-2025, NVIDIA CORPORATION.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ function(find_and_configure_raft)
     cmake_parse_arguments(PKG "${options}" "${oneValueArgs}"
                           "${multiValueArgs}" ${ARGN} )
 
-    if(PKG_CLONE_ON_PIN AND NOT PKG_PINNED_TAG STREQUAL "branch-${CUMLPRIMS_MG_BRANCH_VERSION_raft}")
+    if(PKG_CLONE_ON_PIN AND NOT PKG_PINNED_TAG STREQUAL "${rapids-cmake-checkout-tag}")
       message(STATUS "CUMLPRIMS_MG: RAFT pinned tag found: ${PKG_PINNED_TAG}. Cloning raft locally.")
       set(CPM_DOWNLOAD_raft ON)
     elseif(PKG_USE_RAFT_STATIC AND (NOT CPM_raft_SOURCE))
@@ -53,13 +53,12 @@ function(find_and_configure_raft)
 endfunction()
 
 set(CUMLPRIMS_MG_MIN_VERSION_raft "${CUMLPRIMS_MG_VERSION_MAJOR}.${CUMLPRIMS_MG_VERSION_MINOR}.00")
-set(CUMLPRIMS_MG_BRANCH_VERSION_raft "${CUMLPRIMS_MG_VERSION_MAJOR}.${CUMLPRIMS_MG_VERSION_MINOR}")
 
 # Change pinned tag here to test a commit in CI
 # To use a different RAFT locally, set the CMake variable
 # CPM_raft_SOURCE=/path/to/local/raft
 find_and_configure_raft(VERSION          ${CUMLPRIMS_MG_MIN_VERSION_raft}
                         FORK             rapidsai
-                        PINNED_TAG       branch-${CUMLPRIMS_MG_BRANCH_VERSION_raft}
+                        PINNED_TAG       ${rapids-cmake-checkout-tag}
                         CLONE_ON_PIN     ${CUMLPRIMS_MG_RAFT_CLONE_ON_PIN}
                         )

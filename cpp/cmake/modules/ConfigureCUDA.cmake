@@ -24,19 +24,14 @@ list(APPEND CUMLPRIMS_MG_CUDA_FLAGS --expt-extended-lambda --expt-relaxed-conste
 # list(APPEND CUMLPRIMS_MG_CUDA_FLAGS -Werror=cross-execution-space-call)
 # list(APPEND CUMLPRIMS_MG_CUDA_FLAGS -Xcompiler=-Wall,-Werror,-Wno-error=deprecated-declarations)
 
-if(DISABLE_DEPRECATION_WARNING)
-    list(APPEND CUMLPRIMS_MG_CXX_FLAGS -Wno-deprecated-declarations)
-    list(APPEND CUMLPRIMS_MG_CUDA_FLAGS -Xcompiler=-Wno-deprecated-declarations)
+if(DISABLE_DEPRECATION_WARNINGS)
+    list(APPEND CUMLPRIMS_MG_CXX_FLAGS -Wno-deprecated-declarations -DRAFT_HIDE_DEPRECATION_WARNINGS)
+    list(APPEND CUMLPRIMS_MG_CUDA_FLAGS -Xcompiler=-Wno-deprecated-declarations -DRAFT_HIDE_DEPRECATION_WARNINGS)
 endif()
 
 # make sure we produce smallest binary size
-list(APPEND CUMLPRIMS_MG_CUDA_FLAGS -Xfatbin=-compress-all)
-if(CMAKE_CUDA_COMPILER_ID STREQUAL "NVIDIA"
-   AND (CMAKE_CUDA_COMPILER_VERSION VERSION_GREATER_EQUAL 12.9 AND CMAKE_CUDA_COMPILER_VERSION
-                                                                   VERSION_LESS 13.0)
-)
-  list(APPEND CUMLPRIMS_MG_CUDA_FLAGS -Xfatbin=--compress-level=3)
-endif()
+include(${rapids-cmake-dir}/cuda/enable_fatbin_compression.cmake)
+rapids_cuda_enable_fatbin_compression(VARIABLE CUMLPRIMS_MG_CUDA_FLAGS TUNE_FOR rapids)
 
 # Option to enable line info in CUDA device compilation to allow introspection when profiling / memchecking
 if(CUDA_ENABLE_LINEINFO)
