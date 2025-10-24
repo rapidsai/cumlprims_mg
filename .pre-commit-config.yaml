@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright (c) 2025, NVIDIA CORPORATION. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+
 ## https://pre-commit.com/
 #
 # Before first use: `pre-commit install`
@@ -21,11 +24,14 @@ repos:
       - id: rapids-dependency-file-generator
         args: ["--clean", "--warn-all", "--strict"]
   - repo: https://github.com/rapidsai/pre-commit-hooks
-    rev: v0.7.0
+    rev: v1.2.0
     hooks:
       - id: verify-copyright
         files: |
           (?x)
-              [.](cmake|cpp|cu|cuh|h|hpp|sh|pxd|py|pyx)$|
-              CMakeLists[.]txt$|
-              meta[.]yaml$
+            [.](cmake|cpp|cu|cuh|h|hpp|sh|pxd|py|pyx)$|
+            CMakeLists[.]txt$|
+            meta[.]yaml$|
+            dependencies[.]yaml$|
+            ^[.]pre-commit-config[.]yaml$|
+            recipe[.]yaml$
