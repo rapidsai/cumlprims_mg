@@ -153,7 +153,7 @@ void allocate(const raft::handle_t& h,
   for (int i = 0; i < desc.partsToRanks.size(); i++) {
     if (myRank == desc.partsToRanks[i]->rank) {
       int partSize          = desc.partsToRanks[i]->size * desc.N;
-      T* partMem            = (T*)allocator->allocate(partSize * sizeof(T), stream);
+      T* partMem            = (T*)allocator->allocate(stream, partSize * sizeof(T));
       Matrix::Data<T>* part = new Matrix::Data<T>(partMem, partSize);
       parts.push_back(part);
     }
@@ -172,7 +172,7 @@ void deallocate(const raft::handle_t& h,
   for (int i = 0, localIndex = 0; i < desc.partsToRanks.size(); i++) {
     if (myRank == desc.partsToRanks[i]->rank) {
       int partSize = desc.partsToRanks[i]->size * desc.N;
-      allocator->deallocate(parts[localIndex]->ptr, partSize * sizeof(T), stream);
+      allocator->deallocate(stream, parts[localIndex]->ptr, partSize * sizeof(T));
       localIndex++;
     }
   }
