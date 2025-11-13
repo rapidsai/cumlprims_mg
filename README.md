@@ -93,7 +93,7 @@ $ make install
 
 4. Tests are optional currently, and can currently be run with CUDA aware MPI installed only. They are meant for development mainly currently (will be enabled in CI in the future). To test full end-to-end functionality of the `libcumlprims` package, the pytests of main cuML need to be run.
 
-To do that, first build (and install) `libcumlprims`, and then refer to [cuML's build guide](https://github.com/rapidsai/cuml/blob/branch-0.14/BUILD.md). After building `libcuml++` and the python package `cuml`, the pytests under `python/cuml/test/dask` will run unit tests of the algorithms that use `libcumlprims`.
+To do that, first build (and install) `libcumlprims`, and then refer to [cuML's build guide](https://github.com/rapidsai/cuml/blob/main/BUILD.md). After building `libcuml++` and the python package `cuml`, the pytests under `python/cuml/test/dask` will run unit tests of the algorithms that use `libcumlprims`.
 
 ### Code Style
 
