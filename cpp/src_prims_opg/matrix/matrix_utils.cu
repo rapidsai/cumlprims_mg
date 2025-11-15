@@ -7,7 +7,7 @@
 #include <cumlprims/opg/matrix/matrix_utils.hpp>
 #include <raft/linalg/transpose.cuh>
 #include <rmm/device_uvector.hpp>
-#include <rmm/mr/device/per_device_resource.hpp>
+#include <rmm/mr/per_device_resource.hpp>
 
 namespace MLCommon {
 namespace Matrix {
