@@ -19,8 +19,8 @@ dependencies:
 - libcurand-dev
 - libcusolver-dev
 - libcusparse-dev
-- libraft-headers==25.12.*
-- librmm==25.12.*
+- libraft-headers==26.2.*
+- librmm==26.2.*
 - ninja
 - pre-commit
 - python>=3.10,<3.14
