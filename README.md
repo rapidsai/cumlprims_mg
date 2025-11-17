@@ -1,6 +1,6 @@
 # cuMLPrims
 
-This repository contains C++ and CUDA code of multi-node multi-GPU (MNMG) ML mathematical primitives and some algorithms, that are used by [the release/25.12 cuML project](https://github.com/rapidsai/cuml). The build system uses CMake for build configuration, and an out-of-source build is recommended.
+This repository contains C++ and CUDA code of multi-node multi-GPU (MNMG) ML mathematical primitives and some algorithms, that are used by [the main cuML project](https://github.com/rapidsai/cuml). The build system uses CMake for build configuration, and an out-of-source build is recommended.
 
 The MNMG code included in cuMLPrims follows the model one-process-per-GPU (OPG), where the code uses a communication library (based on cuML's comms) and each process has one GPU assigned to it. This is in contrast to single-process-multi-GPU (SPMG) approaches, which are no longer part of the code base.
 
@@ -20,7 +20,7 @@ The folder structure mirrors closely the structure of GitHub cuML. The folders a
 
 ### Requirements
 
-The release/25.12 artifact produced by the build system is the shared library libcumlprims. Ensure the following dependencies are satisfied:
+The main artifact produced by the build system is the shared library libcumlprims. Ensure the following dependencies are satisfied:
 
 1. CMake (>= 3.30.4)
 2. CUDA (>= 12.0)
@@ -91,9 +91,9 @@ $ make -j
 $ make install
 ```
 
-4. Tests are optional currently, and can currently be run with CUDA aware MPI installed only. They are meant for development mainly currently (will be enabled in CI in the future). To test full end-to-end functionality of the `libcumlprims` package, the pytests of release/25.12 cuML need to be run.
+4. Tests are optional currently, and can currently be run with CUDA aware MPI installed only. They are meant for development mainly currently (will be enabled in CI in the future). To test full end-to-end functionality of the `libcumlprims` package, the pytests of main cuML need to be run.
 
-To do that, first build (and install) `libcumlprims`, and then refer to [cuML's build guide](https://github.com/rapidsai/cuml/blob/release/25.12/BUILD.md). After building `libcuml++` and the python package `cuml`, the pytests under `python/cuml/test/dask` will run unit tests of the algorithms that use `libcumlprims`.
+To do that, first build (and install) `libcumlprims`, and then refer to [cuML's build guide](https://github.com/rapidsai/cuml/blob/main/BUILD.md). After building `libcuml++` and the python package `cuml`, the pytests under `python/cuml/test/dask` will run unit tests of the algorithms that use `libcumlprims`.
 
 ### Code Style
 
