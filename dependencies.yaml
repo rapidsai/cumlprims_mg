@@ -20,8 +20,8 @@ files:
       - develop
       - py_version
 channels:
-  - rapidsai
   - rapidsai-nightly
+  - rapidsai
   - conda-forge
 dependencies:
   build_cpp:
