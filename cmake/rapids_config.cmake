@@ -27,8 +27,12 @@ if(NOT _rapids_branch)
   )
 endif()
 
-set(rapids-cmake-version "${RAPIDS_VERSION_MAJOR_MINOR}")
-set(rapids-cmake-branch "${_rapids_branch}")
+if(NOT rapids-cmake-version)
+  set(rapids-cmake-version "${RAPIDS_VERSION_MAJOR_MINOR}")
+endif()
+if(NOT rapids-cmake-branch)
+  set(rapids-cmake-branch "${_rapids_branch}")
+endif()
 include("${CMAKE_CURRENT_LIST_DIR}/RAPIDS.cmake")
 
 # Don't use sccache-dist for CMake's compiler tests
