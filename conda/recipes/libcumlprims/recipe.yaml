@@ -83,7 +83,6 @@ requirements:
     - libraft-headers =${{ minor_version }}
     - librmm =${{ minor_version }}
     - nccl
-    - cuda-cudart-dev
     - libcublas-dev
     - libcurand-dev
     - libcusolver-dev
