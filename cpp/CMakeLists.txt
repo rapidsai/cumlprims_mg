@@ -39,7 +39,6 @@ option(BUILD_CUMLPRIMS_LIBRARY "Build libcumlprims library" ON)
 option(BUILD_TESTS "Build the cumlprims OPG test executable" OFF)
 option(CUDA_ENABLE_KERNELINFO "Enable kernel resource usage info" OFF)
 option(CUDA_ENABLE_LINEINFO "Enable the -lineinfo option for nvcc (useful for cuda-memcheck / profiler" OFF)
-option(CUDA_STATIC_RUNTIME "Statically link the CUDA runtime" OFF)
 option(CUDA_STATIC_MATH_LIBRARIES "Statically link the CUDA math libraries" OFF)
 option(CUMLPRIMS_MG_RAFT_CLONE_ON_PIN "Explicitly clone RAFT branch when pinned to non-feature branch" OFF)
 option(DETECT_CONDA_ENV "Enable detection of conda environment for dependencies" ON)
@@ -59,7 +58,6 @@ message(VERBOSE "CUMLPRIMS_MG: Disable OpenMP: ${DISABLE_OPENMP}")
 message(VERBOSE "CUMLPRIMS_MG: Enable kernel resource usage info: ${CUDA_ENABLE_KERNELINFO}")
 message(VERBOSE "CUMLPRIMS_MG: Enable lineinfo in nvcc: ${CUDA_ENABLE_LINEINFO}")
 message(VERBOSE "CUMLPRIMS_MG: Enable nvtx markers: ${NVTX}")
-message(VERBOSE "CUMLPRIMS_MG: Statically link the CUDA runtime: ${CUDA_STATIC_RUNTIME}")
 message(VERBOSE "CUMLPRIMS_MG: Statically link the CUDA math libraries: ${CUDA_STATIC_MATH_LIBRARIES}")
 
 # Set RMM logging level
@@ -87,7 +85,7 @@ if(CUDA_STATIC_MATH_LIBRARIES)
 endif()
 
 # CUDA runtime
-rapids_cuda_init_runtime(USE_STATIC ${CUDA_STATIC_RUNTIME})
+rapids_cuda_init_runtime(USE_STATIC ON)
 
 # * find CUDAToolkit package
 # * determine GPU architectures

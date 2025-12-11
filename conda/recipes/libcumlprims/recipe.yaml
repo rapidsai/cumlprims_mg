@@ -83,7 +83,6 @@ requirements:
     - libraft-headers =${{ minor_version }}
     - librmm =${{ minor_version }}
     - nccl
-    - cuda-cudart-dev
     - libcublas-dev
     - libcurand-dev
     - libcusolver-dev
@@ -91,14 +90,12 @@ requirements:
   run:
     - ${{ pin_compatible("cuda-version", upper_bound="x", lower_bound="x") }}
     - librmm =${{ minor_version }}
-    - cuda-cudart
     - libcublas
     - libcurand
     - libcusolver
     - libcusparse
   ignore_run_exports:
     by_name:
-      - cuda-cudart
       - cuda-version
       - libcublas
       - libcurand
