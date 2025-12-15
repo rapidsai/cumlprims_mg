@@ -30,7 +30,7 @@ The main artifact produced by the build system is the shared library libcumlprim
 It is recommended to use conda for environment/package management. See `conda/environments/` for available environment files.
 
 ```bash
-conda env create --name cumlprims_dev --file conda/environments/all_cuda-130_arch-$(arch).yaml
+conda env create --name cumlprims_dev --file conda/environments/all_cuda-131_arch-$(arch).yaml
 ```
 
 ### Using build.sh script

@@ -11,9 +11,9 @@ dependencies:
 - cmake>=3.30.4
 - cuda-nvcc
 - cuda-nvtx-dev
-- cuda-version=13.0
+- cuda-version=13.1
 - cxx-compiler
-- gcc_linux-aarch64=14.*
+- gcc_linux-64=14.*
 - libcublas-dev
 - libcurand-dev
 - libcusolver-dev
@@ -23,5 +23,5 @@ dependencies:
 - ninja
 - pre-commit
 - python>=3.10,<3.14
-- sysroot_linux-aarch64==2.28
-name: all_cuda-130_arch-aarch64
+- sysroot_linux-64==2.28
+name: all_cuda-131_arch-x86_64
