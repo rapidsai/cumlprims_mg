@@ -1,3 +1,9 @@
+> [!IMPORTANT]
+> The final release of this project was `v25.12`.
+> Its functionality was moved into `cuML`, starting with `v26.02`.
+>
+> See https://docs.rapids.ai/notices/rsn0056/ for details.
+
 # cuMLPrims
 
 This repository contains C++ and CUDA code of multi-node multi-GPU (MNMG) ML mathematical primitives and some algorithms, that are used by [the main cuML project](https://github.com/rapidsai/cuml). The build system uses CMake for build configuration, and an out-of-source build is recommended.
